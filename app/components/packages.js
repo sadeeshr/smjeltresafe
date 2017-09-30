@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { Redirect, Link } from 'react-router-dom';
-
+// import car from '../car.png';
 
 class Packages extends Component {
+
+
   render() {
     return (
       <div>
@@ -32,7 +34,7 @@ class Packages extends Component {
 
                   <div className="packageimg">
 
-                    <img src="car.png" />
+                    <img src={require('../car.png')}/>
 
                   </div>
 

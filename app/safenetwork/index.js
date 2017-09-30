@@ -82,6 +82,48 @@ class SafeAPI {
 
   }
 
+  saveUri(uri) {
+    this.app = uri;
+    console.log("app inside safe lib: ", this.app);
+    return this.app;
+  }
+
+  saveUserInfo(user) {
+    this.app.auth.refreshContainersPermissions().then(() =>
+    this.app.auth.getOwnContainer()
+      .then((md) => md.getEntries()
+        .then((entries) => entries.mutate()
+          .then((mut) => {
+            mut.insert('firstname', user.firstname)
+              .then(() => mut.insert('middlename', user.middlename)
+                .then(() => mut.insert('lastname', user.lastname)
+                  .then(() => mut.insert('street', user.street)
+                    .then(() => mut.insert('nr', user.nr)
+                    .then(() => mut.insert('ext', user.ext)
+                      .then(() => mut.insert('zip', user.zip)
+                        .then(() => mut.insert('town', user.town)
+                          .then(() => mut.insert('avatar', user.avatar)
+                            .then(() => md.applyEntriesMutation(mut))
+                          )
+                        )
+                      )
+                    )
+                  )
+                )
+              )
+            )
+          }
+          )
+
+          )
+        ))
+      .then(() => this.app.auth.getOwnContainer())
+        .then((md) => md.get('middlename'))
+        .then((value) => {
+          console.log(value.buf.toString());
+        })
+  }
+
   getUri() {
     keytar.getPassword('authuri', 'smartjuice')
     .then((res) => {

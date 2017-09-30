@@ -28,11 +28,12 @@ class Home extends Component {
   }
 
   goPackages() {
-    this.setState({goPackages : true})
+    this.setState({goPackages : !this.state.goPackages});
   }
 
   render() {
     if (this.state.goPackages) {
+      this.goPackages();
       return <Redirect to="/packages" />;
     } else {
       return (
@@ -105,7 +106,6 @@ class Home extends Component {
 
            </div>
            </Panel>
-           <Link to="/packages">Packages</Link>
            <Button bsStyle="success" className="btn mainbtn" onClick={this.goPackages.bind(this)}>Select Package</Button>
            <br /> <br />
           </div>

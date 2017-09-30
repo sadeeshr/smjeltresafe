@@ -1,4 +1,4 @@
-import { AUTHORIZE, SAFEAPP, CHECKACCESS } from '../actions'
+import { AUTHORIZE, SAFEAPP, CHECKACCESS, SAVE_USER_INFO } from '../actions'
 import safe from '../safenetwork'
 
 const auth = (state, action) => {
@@ -19,6 +19,13 @@ const auth = (state, action) => {
     }
 
     case CHECKACCESS: {
+      state = {
+        ...state
+      }
+      break;
+    }
+
+    case SAVE_USER_INFO: {
       state = {
         ...state
       }

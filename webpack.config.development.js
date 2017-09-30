@@ -42,6 +42,9 @@ export default validate(merge(baseConfig, {
           'style-loader',
           'css-loader?sourceMap'
         ]
+      }, {
+        test: /\.(png|jpg)$/,
+        loader: 'url?limit=25000'
       },
       // {
       //   test: /\.scss$/,

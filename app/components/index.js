@@ -186,42 +186,43 @@ class Smj extends Component {
     this.props.checkAccessContainer();
     if(this.state.submittxt == "REGISTER") {
 
-      this.state.app.auth.refreshContainersPermissions().then(() =>
-      this.state.app.auth.getOwnContainer()
-        .then((md) => md.getEntries()
-          .then((entries) => entries.mutate()
-            .then((mut) => {
-              mut.insert('firstname', this.state.user.firstname)
-                .then(() => mut.insert('middlename', this.state.user.middlename)
-                  .then(() => mut.insert('lastname', this.state.user.lastname)
-                    .then(() => mut.insert('street', this.state.user.street)
-                      .then(() => mut.insert('nr', this.state.user.nr)
-                      .then(() => mut.insert('ext', this.state.user.ext)
-                        .then(() => mut.insert('zip', this.state.user.zip)
-                          .then(() => mut.insert('town', this.state.user.town)
-                            .then(() => mut.insert('avatar', this.state.user.avatar)
-                              .then(() => md.applyEntriesMutation(mut))
-                            )
-                          )
-                        )
-                      )
-                    )
-                  )
-                )
-              )
-            }
-            )
+      this.props.saveUserInfo(this.state.user);
+      // this.state.app.auth.refreshContainersPermissions().then(() =>
+      // this.state.app.auth.getOwnContainer()
+      //   .then((md) => md.getEntries()
+      //     .then((entries) => entries.mutate()
+      //       .then((mut) => {
+      //         mut.insert('firstname', this.state.user.firstname)
+      //           .then(() => mut.insert('middlename', this.state.user.middlename)
+      //             .then(() => mut.insert('lastname', this.state.user.lastname)
+      //               .then(() => mut.insert('street', this.state.user.street)
+      //                 .then(() => mut.insert('nr', this.state.user.nr)
+      //                 .then(() => mut.insert('ext', this.state.user.ext)
+      //                   .then(() => mut.insert('zip', this.state.user.zip)
+      //                     .then(() => mut.insert('town', this.state.user.town)
+      //                       .then(() => mut.insert('avatar', this.state.user.avatar)
+      //                         .then(() => md.applyEntriesMutation(mut))
+      //                       )
+      //                     )
+      //                   )
+      //                 )
+      //               )
+      //             )
+      //           )
+      //         )
+      //       }
+      //       )
 
-            )
-          ))
-        .then(() => this.state.app.auth.getOwnContainer())
-          .then((md) => md.get('middlename'))
-          .then((value) => {
-            console.log(value.buf.toString());
-            // alert("Thank You. You are Registered.");
-            this.setState({title : "Welcome to Smartjuice", hideitem: true});
-            this.goHomeScreen();
-          })
+      //       )
+      //     ))
+      //   .then(() => this.state.app.auth.getOwnContainer())
+      //     .then((md) => md.get('middlename'))
+      //     .then((value) => {
+      //       console.log(value.buf.toString());
+      //       // alert("Thank You. You are Registered.");
+      //       this.setState({title : "Welcome to Smartjuice", hideitem: true});
+      //       this.goHomeScreen();
+      //     })
 
 
       // const metaName = `Services container for: smartjuice`;

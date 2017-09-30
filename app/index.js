@@ -52,13 +52,13 @@ window.document.addEventListener('dragover', function(e) {
 });
 
 store.subscribe(() => { console.log("store: ", store.getState())});
-// store.dispatch(authorizationRequest(store.getState()));
+store.dispatch(authorizationRequest(store.getState()));
 
 render(
   <Provider store={store}>
     <Router>
       <div>
-      <Home />
+      <Smj />
       <Route exact path="/" component={Smj}/>
       <Route exact path="/home" component={Home}/>
       <Route exact path="/packages" component={Packages}/>

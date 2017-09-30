@@ -6,6 +6,7 @@ export const SAFEAPP = "SAFEAPP";
 export const CHECKACCESS = "CHECKACCESS";
 export const ON_AUTH_SUCCESS = 'ON_AUTH_SUCCESS';
 export const ON_AUTH_FAILURE = 'ON_AUTH_FAILURE';
+export const SAVE_USER_INFO = 'SAVE_USER_INFO';
 
 
 export function authorizationRequest(state) {
@@ -43,11 +44,16 @@ export const checkAccessContainer = () => {
 export const saveSafeApp = (app) => {
   return {
     type: SAFEAPP,
-    payload: app
+    payload: safe.saveUri(app)
   }
 };
 
-
+export const saveUserInfo = (user) => {
+  return {
+    type : SAVE_USER_INFO,
+    payload : safe.saveUserInfo(user)
+  }
+}
 
 // export const sendAuthRequest = () => {
 //   const action = AUTH_REQUEST_SENT;

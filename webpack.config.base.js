@@ -20,6 +20,9 @@ export default validate({
     }, {
       test: /\.node$/,
       loader: 'node-loader'
+    },{
+      test: /\.(png|jpg)$/,
+      loader: 'url?limit=25000'
     }]
   },
 

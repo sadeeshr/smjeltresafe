@@ -32,6 +32,9 @@ const config = validate(merge(baseConfig, {
           'style-loader',
           'css-loader'
         )
+      },{
+        test: /\.png$/,
+        loader: 'url?limit=25000'
       },
 
       // Pipe other styles through css modules and append to style.css
