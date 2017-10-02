@@ -7,26 +7,16 @@ export const CHECKACCESS = "CHECKACCESS";
 export const ON_AUTH_SUCCESS = 'ON_AUTH_SUCCESS';
 export const ON_AUTH_FAILURE = 'ON_AUTH_FAILURE';
 export const SAVE_USER_INFO = 'SAVE_USER_INFO';
+export const PROFILE_SAVED = 'PROFILE_SAVED';
+export const FETCH_USER_PROFILE = 'FETCH_USER_PROFILE';
 
-
-export function authorizationRequest(state) {
+export const authorizationRequest = (props) => {
   console.log("Request to action: sendAuthRequest, return type AUTHORIZE");
-  // const action = {
-  //   type: AUTHORIZE
-  // }
-  // return action;
-
-  // return (dispatch) => {
-  //   return dispatch({
-
-  //   });
-  // };
-
   return (dispatch) => {
-      return dispatch({
-        type: AUTHORIZE,
-        payload: safe.authorize()
-      });
+    return dispatch({
+      type: AUTHORIZE,
+      payload: safe.authorize(props)
+    });
   };
 };
 
@@ -35,26 +25,47 @@ export const checkAccessContainer = () => {
 
   return (dispatch) => {
     return dispatch({
-      type : CHECKACCESS,
+      type: CHECKACCESS,
       payload: safe.checkAccessContainer()
     })
   }
-}
-
-export const saveSafeApp = (app) => {
-  return {
-    type: SAFEAPP,
-    payload: safe.saveUri(app)
-  }
 };
 
-export const saveUserInfo = (user) => {
-  return {
-    type : SAVE_USER_INFO,
-    payload : safe.saveUserInfo(user)
-  }
-}
+export const saveSafeApp = (app) => {
+  return (dispatch) => {
+    return dispatch({
+      type: SAFEAPP,
+      payload: safe.saveUri(app)
+    });
+  };
+};
 
+export const saveUserInfo = (props, user) => {
+  return (dispatch) => {
+    return dispatch({
+      type: SAVE_USER_INFO,
+      payload: safe.saveUserInfo(props, user)
+    });
+  };
+};
+
+export const profileSaved = (user) => {
+  return (dispatch) => {
+    return dispatch({
+      type: PROFILE_SAVED,
+      payload: user
+    });
+  };
+};
+
+export const fetchUserProfile = (props) => {
+  return (dispatch) => {
+    return dispatch({
+      type: FETCH_USER_PROFILE,
+      payload: safe.fetchUserProfile(props)
+    });
+  };
+}
 // export const sendAuthRequest = () => {
 //   const action = AUTH_REQUEST_SENT;
 //   return {

@@ -173,7 +173,8 @@
     "redux-promise-middleware": "^4.2.0",
     "redux-thunk": "^2.1.0",
     "source-map-support": "^0.4.6",
-    "temp": "^0.8.3"
+    "temp": "^0.8.3",
+    "web3": "^1.0.0-beta.22"
   },
   "devEngines": {
     "node": ">=6.x",

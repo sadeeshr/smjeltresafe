@@ -1,4 +1,4 @@
-import { AUTHORIZE, SAFEAPP, CHECKACCESS, SAVE_USER_INFO } from '../actions'
+import { AUTHORIZE, SAFEAPP, CHECKACCESS, SAVE_USER_INFO, PROFILE_SAVED, FETCH_USER_PROFILE } from '../actions'
 import safe from '../safenetwork'
 
 const auth = (state, action) => {
@@ -26,6 +26,23 @@ const auth = (state, action) => {
     }
 
     case SAVE_USER_INFO: {
+      state = {
+        ...state
+      }
+      break;
+    }
+
+    case PROFILE_SAVED: {
+      state = {
+        ...state,
+        profile_saved : true,
+        user : action.payload
+      }
+      break;
+    }
+
+    case FETCH_USER_PROFILE: {
+      console.log("user profile fetch: ");
       state = {
         ...state
       }
